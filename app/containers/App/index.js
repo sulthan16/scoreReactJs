@@ -14,6 +14,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import UserPage from 'containers/UserPage/Loadable';
+import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -31,7 +32,7 @@ export default function App() {
 
       <Switch>
         <Route path="/user" component={loggedIn ? UserPage : HomePage} />
-        <Route path="/admin" component={loggedInAdmin ? UserPage : HomePage} />
+        <Route path="/authPage" component={loggedInAdmin ? UserPage : LoginPage} />
         <Route
           component={() =>
           (<div>

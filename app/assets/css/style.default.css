@@ -19,7 +19,7 @@ h1 {
   font-size: 40px;
 }
 #top {
-  background: #555555;
+  background: #428879;
   padding: 10px 0;
 }
 #top .offer {
@@ -45,7 +45,7 @@ h1 {
 #top ul.menu {
   margin: 0;
   text-align: right;
-  font-size: 13px;
+  font-size: 12px;
   list-style: none;
 }
 @media (max-width: 991px) {
@@ -58,6 +58,7 @@ h1 {
 }
 #top ul.menu > li a {
   color: #eeeeee;
+  padding-right: 10px;
 }
 #top ul.menu > li + li:before {
   padding: 0 5px;
@@ -884,7 +885,7 @@ h1 {
   font-weight: 300;
 }
 #footer {
-  background: #e0e0e0;
+  background: #4fbfa8;
   padding: 20px 0;
 }
 #footer ul {
@@ -892,7 +893,7 @@ h1 {
   list-style: none;
 }
 #footer ul a {
-  color: #999999;
+  color: rgb(240, 234, 234);
 }
 #footer .social {
   text-align: left;
@@ -933,9 +934,9 @@ h1 {
   background-color: #4a7f45;
 }
 #copyright {
-  background: #333;
-  color: #ccc;
-  padding: 20px 0;
+  background: #428879;
+  color: rgb(240, 234, 234);
+  padding: 10px 0;
   font-size: 12px;
 }
 #copyright p {

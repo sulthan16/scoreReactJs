@@ -2,7 +2,7 @@ import React from 'react';
 // import { FormattedMessage } from 'react-intl';
 
 // import A from 'components/A';
-// import LocaleToggle from 'containers/LocaleToggle';
+import LocaleToggle from 'containers/LocaleToggle';
 // import Wrapper from './Wrapper';
 // import messages from './messages';
 
@@ -26,8 +26,10 @@ function Footer() {
                 </li>
               </ul>
 
-              <hr />
+              <hr className="hidden-md hidden-lg hidden-sm" />
 
+            </div>
+            <div className="col-md-3 col-sm-6">
               <h4>User section</h4>
 
               <ul>
@@ -37,51 +39,17 @@ function Footer() {
                 </li>
               </ul>
 
-              <hr className="hidden-md hidden-lg hidden-sm" />
-
-            </div>
-            <div className="col-md-3 col-sm-6">
-
-              <h4>Top categories</h4>
-
-              <h5>Men</h5>
-
-              <ul>
-                <li><a href="category.html">T-shirts</a>
-                </li>
-                <li><a href="category.html">Shirts</a>
-                </li>
-                <li><a href="category.html">Accessories</a>
-                </li>
-              </ul>
-
-              <h5>Ladies</h5>
-              <ul>
-                <li><a href="category.html">T-shirts</a>
-                </li>
-                <li><a href="category.html">Skirts</a>
-                </li>
-                <li><a href="category.html">Pants</a>
-                </li>
-                <li><a href="category.html">Accessories</a>
-                </li>
-              </ul>
-
               <hr className="hidden-md hidden-lg" />
 
             </div>
             <div className="col-md-3 col-sm-6">
 
               <h4>Where to find us</h4>
-
-              <p><strong>Obaju Ltd.</strong>
-                <br />13/25 New Avenue
-                            <br />New Heaven
-                            <br />45Y 73J
-                            <br />England
-                            <br />
-                <strong>Great Britain</strong>
-              </p>
+              <ul>
+                <li>
+                  <a>Kalibata city, South Jakarta Region, Indonesia</a>
+                </li>
+              </ul>
 
               <a href="contact.html">Go to contact page</a>
 
@@ -92,28 +60,15 @@ function Footer() {
 
             <div className="col-md-3 col-sm-6">
 
-              <h4>Get the news</h4>
+              <h4>Languagge</h4>
+              <ul>
+                <li>
+                  <a><LocaleToggle /></a>
+                </li>
+              </ul>
 
-              <p className="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-              <form>
-                <div className="input-group">
-
-                  <input type="text" className="form-control" />
-
-                  <span className="input-group-btn">
-
-                    <button className="btn btn-default" type="button">Subscribe!</button>
-
-                  </span>
-
-                </div>
-              </form>
-
+              <h4>&nbsp;</h4>
               <hr />
-
-              <h4>Stay in touch</h4>
-
               <p className="social">
                 <a href="" className="facebook external" data-animate-hover="shake"><i className="fa fa-facebook"></i></a>
                 <a href="" className="twitter external" data-animate-hover="shake"><i className="fa fa-twitter"></i></a>
@@ -130,12 +85,10 @@ function Footer() {
       <div id="copyright">
         <div className="container">
           <div className="col-md-6">
-            <p className="pull-left">© 2017 Your name goes here.</p>
+            <p className="pull-left">© 2017 score structure.</p>
 
           </div>
           <div className="col-md-6">
-            <p className="pull-right">Template by <a href="/">Bootstrapious</a> & <a href="/">Fity</a>
-            </p>
           </div>
         </div>
       </div>

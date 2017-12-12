@@ -21,7 +21,7 @@ injectGlobal`
   }
 
   #app {
-    background-color: #fafafa;
+    background-color: whitesmoke;
     min-height: 100%;
     min-width: 100%;
   }
@@ -31,4 +31,21 @@ injectGlobal`
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
+
+  .background-login{
+
+    display: table;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: whitesmoke;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
 `;

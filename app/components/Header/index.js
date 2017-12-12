@@ -32,16 +32,14 @@ class Header extends React.Component {
             <div className="col-md-6 offer" data-animate="fadeInDown">
             </div>
             <div className="col-md-6" data-animate="fadeInDown">
-              <ul className="menu" style={{ borderRightColor: 'none' }}>
-                <li>
-                  <a>
-                    Language:
-                  </a>
+              <ul className="menu">
+                <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                 </li>
-                <li>
-                  <a>
-                    <LocaleToggle />
-                  </a>
+                <li><a href="register.html">Register</a>
+                </li>
+                <li><a href="contact.html">Contact</a>
+                </li>
+                <li><a href="#">Recently viewed</a>
                 </li>
               </ul>
             </div>

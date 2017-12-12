@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Route,
@@ -7,7 +8,11 @@ import { FormattedMessage } from 'react-intl';
 import LocaleToggle from 'containers/LocaleToggle';
 import messages from './messages';
 
-class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const MenuLink = ({ label, to, activeOnlyWhenExact }) => (
       <Route
@@ -15,7 +20,8 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
         exact={activeOnlyWhenExact}
         children={({ match }) => (
           <li className={match ? 'active' : ''}>
-            <Link to={to}>{label}</Link></li>
+            <Link to={to}>{label}</Link>
+          </li>
       )}
       />
     );

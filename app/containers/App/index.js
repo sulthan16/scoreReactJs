@@ -28,17 +28,24 @@ export default function App() {
       >
         <meta name="description" content="A React.js Boilerplate application with SCore Structure" />
       </Helmet>
-      <Header />
+
       <Switch>
-        <div className="container">
-          <Route exact path="/" component={HomePage} />
-          <Route path="/user" component={loggedIn ? UserPage : HomePage} />
-          <Route path="/admin" component={loggedInAdmin ? UserPage : HomePage} />
-          <Route path="/features" component={FeaturePage} />
-        </div>
+        <Route path="/user" component={loggedIn ? UserPage : HomePage} />
+        <Route path="/admin" component={loggedInAdmin ? UserPage : HomePage} />
+        <Route
+          component={() =>
+          (<div>
+            <Header />
+            <div className="container">
+              <Route exact path="/" component={HomePage} />
+              <Route path="/features" component={FeaturePage} />
+            </div>
+            <Footer />
+          </div>)
+        }
+        />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <Footer />
     </div>
   );
 }

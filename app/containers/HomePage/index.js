@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
+// import { Switch, Route } from 'react-router-dom';
 
 // import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';

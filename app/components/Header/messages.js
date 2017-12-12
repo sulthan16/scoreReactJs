@@ -14,4 +14,8 @@ export default defineMessages({
     id: 'boilerplate.components.Header.user',
     defaultMessage: 'User',
   },
+  features: {
+    id: 'boilerplate.components.Header.features',
+    defaultMessage: 'Features',
+  },
 });

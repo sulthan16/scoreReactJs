@@ -17,10 +17,6 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
 // import H2 from 'components/H2';
 // import ReposList from 'components/ReposList';
 // import AtPrefix from './AtPrefix';
@@ -59,13 +55,8 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <title>Home Page</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div>
-          <Header />
-          <Switch>
-            <Route to="/user" component={FeaturePage} />
-            <Route path="" component={NotFoundPage} />
-          </Switch>
-          <Footer />
+        <div className="box">
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         </div>
       </article>
     );

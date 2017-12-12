@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import '!!style-loader!css-loader!../node_modules/bootstrap/dist/css/bootstrap.css';
+import '!!style-loader!css-loader!./assets/font-awesome/css/font-awesome.css';
 import '!!style-loader!css-loader!./assets/css/style.default.css';
 
 

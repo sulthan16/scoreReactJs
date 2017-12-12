@@ -14,7 +14,11 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import UserPage from 'containers/UserPage/Loadable';
-const loggedIn = false;
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+const loggedIn = true;
+const loggedInAdmin = false;
 export default function App() {
   return (
     <div>
@@ -24,30 +28,17 @@ export default function App() {
       >
         <meta name="description" content="A React.js Boilerplate application with SCore Structure" />
       </Helmet>
+      <Header />
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => (
-          loggedIn ? (
-            <UserPage />
-          ) : (
-            <HomePage />
-          )
-        )}
-        />
-        <Route
-          exact
-          path="/admin"
-          render={() => (
-          loggedIn ? (
-            <FeaturePage />
-          ) : (
-            <HomePage />
-          )
-        )}
-        />
+        <div className="container">
+          <Route exact path="/" component={HomePage} />
+          <Route path="/user" component={loggedIn ? UserPage : HomePage} />
+          <Route path="/admin" component={loggedInAdmin ? UserPage : HomePage} />
+          <Route path="/features" component={FeaturePage} />
+        </div>
+        <Route path="" component={NotFoundPage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

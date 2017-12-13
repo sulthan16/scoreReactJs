@@ -9,4 +9,7 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_BERITA = 'app/HomePage/LOAD_BERITA';
+export const LOAD_BERITA_SUCCESS = 'app/HomePage/LOAD_BERITA_SUCCESS';
+export const LOAD_BERITA_ERROR = 'app/HomePage/LOAD_BERITA_ERROR';
+

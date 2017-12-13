@@ -16,7 +16,7 @@
  */
 
 import {
-  CHANGE_USERNAME,
+  LOAD_BERITA, LOAD_BERITA_SUCCESS, LOAD_BERITA_ERROR,
 } from './constants';
 
 /**
@@ -26,9 +26,22 @@ import {
  *
  * @return {object}    An action object with a type of CHANGE_USERNAME
  */
-export function changeUsername(name) {
+export function loadBerita(loadParams) {
   return {
-    type: CHANGE_USERNAME,
-    name,
+    type: LOAD_BERITA,
+    loadParams,
+  };
+}
+
+export function loadBeritaSuccess(result) {
+  return {
+    type: LOAD_BERITA_SUCCESS,
+    result,
+  };
+}
+export function loadBeritaError(message) {
+  return {
+    type: LOAD_BERITA_ERROR,
+    message,
   };
 }

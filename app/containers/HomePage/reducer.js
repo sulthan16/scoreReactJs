@@ -12,21 +12,26 @@
 import { fromJS } from 'immutable';
 
 import {
-  CHANGE_USERNAME,
+  LOAD_BERITA,
+  LOAD_BERITA_SUCCESS,
+  LOAD_BERITA_ERROR,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-  username: '',
+  getBerita: null,
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_USERNAME:
-
-      // Delete prefixed '@' from the github username
+    case LOAD_BERITA:
+      return state;
+    case LOAD_BERITA_SUCCESS:
       return state
-        .set('username', action.name.replace(/@/gi, ''));
+      .set('loadBeritaSuccess', action.result);
+    case LOAD_BERITA_ERROR:
+      return state
+      .set('loadBeritaErr', action.message);
     default:
       return state;
   }

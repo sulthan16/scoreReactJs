@@ -3,36 +3,30 @@
  */
 
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
-
+import { API_URL } from 'constants/app';
+import { makeSelectBerita } from 'containers/HomePage/selectors';
 import request from 'utils/request';
-import { makeSelectUsername } from 'containers/HomePage/selectors';
+import * as consts from './constants';
+import * as actions from './actions';
 
-/**
- * Github repos request/response handler
- */
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
 
+export function* getBerita() {
+  const data = yield select(makeSelectBerita('searchParams'));
+  const requestURL = `${API_URL}/page/home/getData`;
   try {
-    // Call our request helper (see 'utils/request')
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
+    const result = yield call(request, requestURL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    yield put(actions.loadBeritaSuccess(result));
   } catch (err) {
-    yield put(repoLoadingError(err));
+    yield put(actions.loadBeritaError(err));
   }
 }
 
 /**
  * Root saga manages watcher lifecycle
  */
-export default function* githubData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
-  yield takeLatest(LOAD_REPOS, getRepos);
+export default function* homeData() {
+  yield takeLatest(consts.LOAD_BERITA, getBerita);
 }

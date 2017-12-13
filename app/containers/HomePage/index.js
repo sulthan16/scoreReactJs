@@ -7,56 +7,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-// import { Switch, Route } from 'react-router-dom';
-
-// import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-
+import Img from 'components/Img';
 import injectReducer from 'utils/injectReducer';
+import { API_URL } from 'constants/app';
 import injectSaga from 'utils/injectSaga';
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
-// import H2 from 'components/H2';
-// import ReposList from 'components/ReposList';
-// import AtPrefix from './AtPrefix';
-// import CenteredSection from './CenteredSection';
-// import Form from './Form';
-// import Input from './Input';
-// import Section from './Section';
-// import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { makeSelectBeritaSuccess } from './selectors';
+import { loadBerita } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAdd: false,
+      isEdit: false,
+      userListSelected: [],
+    };
+  }
+  componentWillMount() {
+    this.props.onLoadBerita({});
   }
 
   render() {
-    // const { loading, error, repos } = this.props;
-    // const reposListProps = {
-    //   loading,
-    //   error,
-    //   repos,
-    // };
-
+    if (this.props.repoBeritaSuccess) {
+      const list = this.props.repoBeritaSuccess.data;
+      this.listItems = list.map((key) =>
+        (<div className="box clickable row" key={key.id_post.toString()}>
+          <div className="col-md-3 col-sm-3">
+            <Img src={`${API_URL}/image/get/featured/thumbs/${key.thumbnail}`} alt="thumnail" />
+          </div>
+          <div className="col-md-9 col-sm-9">
+            <h3>{key.post_title}</h3>
+            <p>{key.description}</p>
+          </div>
+        </div>)
+      );
+    }
     return (
       <article>
         <Helmet>
           <title>Home Page</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
         </Helmet>
-        <div className="box">
-          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        <div>
+          {this.listItems}
         </div>
       </article>
     );
@@ -64,35 +63,18 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  // loading: PropTypes.bool,
-  // error: PropTypes.oneOfType([
-  //   PropTypes.object,
-  //   PropTypes.bool,
-  // ]),
-  // repos: PropTypes.oneOfType([
-  //   PropTypes.array,
-  //   PropTypes.bool,
-  // ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  // onChangeUsername: PropTypes.func,
+  repoBeritaSuccess: PropTypes.object,
+  onLoadBerita: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
+    onLoadBerita: (val) => dispatch(loadBerita(val)),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
+  repoBeritaSuccess: makeSelectBeritaSuccess('loadBeritaSuccess'),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
